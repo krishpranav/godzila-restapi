@@ -1,10 +1,17 @@
 package main_test
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/godzillaframework/godzilla"
 )
 
 func maintest(t *testing.T) {
-	fmt.Println("Hello World, Testing Works")
+	gz := godzilla.New()
+
+	gz.Get("/test", func(ctx godzilla.Context) {
+		ctx.SendString("Test passed")
+	})
+
+	gz.Start(":1234")
 }

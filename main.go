@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"github.com/godzillaframework/godzilla"
+)
 
 func main() {
-	fmt.Println("Hello")
+	gz := godzilla.New()
+
+	gz.Get("/index", hello)
+
+	gz.Start(":8080")
+}
+
+func hello(ctx godzilla.Context) {
+	ctx.SendString("Hello")
 }
