@@ -8,10 +8,12 @@ func main() {
 	gz := godzilla.New()
 
 	gz.Get("/index", hello)
+	gz.Static("/main", "./static/index.html")
 
 	gz.Start(":8080")
+
 }
 
-func hello(ctx godzilla.Context) {
-	ctx.SendString("Hello")
+func hello(godz godzilla.Context) {
+	godz.SendString("Hello")
 }
