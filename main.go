@@ -1,28 +1,34 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/godzillaframework/godzilla"
 )
 
-// var usertable = []user.users{
-// 	{Username: "USername one", Password: "Password"},
-// 	{Username: "USername one", Password: "Password"},
-// 	{Username: "USername one", Password: "Password"},
-// 	{Username: "USername one", Password: "Password"},
-// 	{Username: "USername one", Password: "Password"},
-// }
+type user struct {
+	User     string
+	Password string
+}
+
+var usertable = []user{
+	{User: "SomeOne", Password: "PasswordOne"},
+	{User: "SomeOne", Password: "PasswordTwo"},
+	{User: "SomeOne", Password: "PasswordTwo"},
+	{User: "SomeOne", Password: "PasswordTwo"},
+	{User: "SomeOne", Password: "PasswordTwo"},
+	{User: "SomeOne", Password: "PasswordTwo"},
+}
 
 func main() {
-	// gz := godzilla.New()
+	gz := godzilla.New()
 
-	// gz.Get("/index", hello)
-	// gz.Static("/main", "./static/index.html")
+	/* handlers */
+	gz.Get("/index", hello)
+	gz.Get("/users", userhandler)
 
-	// gz.Start(":8080")
+	/* static web server */
+	gz.Static("/main", "./static/index.html")
 
-	fmt.Println(usertable)
+	gz.Start(":8080")
 
 }
 
@@ -31,5 +37,5 @@ func hello(godz godzilla.Context) {
 }
 
 func userhandler(godz godzilla.Context) {
-
+	godz.SendJSON(usertable)
 }
