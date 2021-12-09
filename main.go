@@ -9,6 +9,13 @@ type user struct {
 	Password string
 }
 
+type aboutapi struct {
+	About    string
+	Github   string
+	HomePage string
+	Author   string
+}
+
 var usertable = []user{
 	{User: "SomeOne", Password: "PasswordOne"},
 	{User: "SomeOne", Password: "PasswordTwo"},
@@ -18,12 +25,17 @@ var usertable = []user{
 	{User: "SomeOne", Password: "PasswordTwo"},
 }
 
+var infoapi = []aboutapi{
+	{About: "A Simple Api Built Using Godzilla Web Framework", Github: "https://github.com/krishpranav/godzila-restapi", HomePage: "https://github.com/godzillaframework/godzilla", Author: "KrishPranav"},
+}
+
 func main() {
 	gz := godzilla.New()
 
 	/* handlers */
 	gz.Get("/index", hello)
 	gz.Get("/users", userhandler)
+	gz.Get("/aboutapi", aboutapihandler)
 
 	/* static web server */
 	gz.Static("/main", "./static/index.html")
@@ -38,4 +50,8 @@ func hello(godz godzilla.Context) {
 
 func userhandler(godz godzilla.Context) {
 	godz.SendJSON(usertable)
+}
+
+func aboutapihandler(godz godzilla.Context) {
+	godz.SendJSON(infoapi)
 }
