@@ -1,6 +1,6 @@
-package user
+package apiuser
 
-type user struct {
+type Users struct {
 	UserName string
 	Password string
 }
