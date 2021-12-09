@@ -2,9 +2,10 @@ module github.com/krishpranav/godzila-restapi
 
 go 1.17
 
+require github.com/godzillaframework/godzilla v0.0.0-20211206161451-f97c8a09ed29
+
 require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/godzillaframework/godzilla v0.0.0-20211206161451-f97c8a09ed29 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
